@@ -1,2 +1,29 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+<h1>CircuitKing</h1>
+
+<div class="create-your-own-workout">
+  <div class="exercise-selection-area">
+    This is where
+    <ul>
+    <% @exercises.each do |exercise| %>
+      <li><strong><%= exercise.name %></strong></li>
+    <% end %>
+      <li>there</li>
+      <li>will be a list</li>
+      <li>of exercises to add</li>
+    </ul>
+    <%= link_to "Add new Exercise", new_exercise_path %>
+  </div>
+</div>
+
+
+<div class="popular-workouts">
+  <h2>Popular Workouts</h2>
+    <% @circuits.each do |circuit| %>
+      <h3><%= circuit.name  %></h3>
+      <% circuit.exercises.each do |e| %>
+      <%= e.name %>
+    <% end %>
+  <% end %>
+</div>
+</div>
