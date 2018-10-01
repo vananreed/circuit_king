@@ -3,5 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @exercises = Exercise.all
+    @circuits = Circuit.all
+    @circuit = Circuit.new
   end
 end

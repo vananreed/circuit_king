@@ -1,6 +1,18 @@
 <h1>CircuitKing</h1>
 
+
+
 <% @exercises.each do |exercise| %>
   <div><strong><%= exercise.name %></strong></div>
   <div><%= exercise.description %></div>
 <% end %>
+
+<div class="popular-workouts">
+  <h2>Popular Workouts</h2>
+  <% @circuits.each do |circuit| %>
+  <h3><%= circuit.name  %></h3>
+  <% circuit.exercises.each do |e| %>
+  <%= e.name %>
+  <% end %>
+  <% end %>
+</div>
