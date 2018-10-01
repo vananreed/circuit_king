@@ -1,18 +1,29 @@
+<div class="container">
 <h1>CircuitKing</h1>
 
+<div class="create-your-own-workout">
+  <div class="exercise-selection-area">
+    This is where
+    <ul>
+    <% @exercises.each do |exercise| %>
+      <li><strong><%= exercise.name %></strong></li>
+    <% end %>
+      <li>there</li>
+      <li>will be a list</li>
+      <li>of exercises to add</li>
+    </ul>
+    <%= link_to "Add new Exercise", new_exercise_path %>
+  </div>
+</div>
 
-
-<% @exercises.each do |exercise| %>
-  <div><strong><%= exercise.name %></strong></div>
-  <div><%= exercise.description %></div>
-<% end %>
 
 <div class="popular-workouts">
   <h2>Popular Workouts</h2>
-  <% @circuits.each do |circuit| %>
-  <h3><%= circuit.name  %></h3>
-  <% circuit.exercises.each do |e| %>
-  <%= e.name %>
+    <% @circuits.each do |circuit| %>
+      <h3><%= circuit.name  %></h3>
+      <% circuit.exercises.each do |e| %>
+      <%= e.name %>
+    <% end %>
   <% end %>
-  <% end %>
+</div>
 </div>
