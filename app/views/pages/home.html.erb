@@ -1,2 +1,6 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>CircuitKing</h1>
+
+<% @exercises.each do |exercise| %>
+  <div><strong><%= exercise.name %></strong></div>
+  <div><%= exercise.description %></div>
+<% end %>
