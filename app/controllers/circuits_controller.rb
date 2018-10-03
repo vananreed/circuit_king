@@ -1,4 +1,8 @@
 class CircuitsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:workout, :show, :index]
+
+  def workout
+  end
 
   def new
   end
