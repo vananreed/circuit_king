@@ -1,4 +1,5 @@
 class ExercisesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :set_exercise, only: [:edit, :update, :destroy, :show]
 
   def index
@@ -8,9 +9,12 @@ class ExercisesController < ApplicationController
   end
 
   def new
+    @exercise = Exercise.new
   end
 
   def create
+    @exercise = Exercise.create(exercise_params)
+    redirect_to root_path
   end
 
   def edit
@@ -26,5 +30,9 @@ class ExercisesController < ApplicationController
 
   def set_exercise
     @exercise = Exercise.find(params[:id])
+  end
+
+  def exercise_params
+    params.require(:exercise).permit(:name, :description, :difficulty)
   end
 end

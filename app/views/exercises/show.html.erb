@@ -1,0 +1,9 @@
+<div class="container">
+<h3 class="text-center"><%= @exercise.name %></h3>
+<div class="exercise-show-exercise-difficulty">Difficulty: <%= @exercise.difficulty.capitalize %></div>
+<div class="exercise-show-description">Description: <%= @exercise.description %></div>
+<div class="exercise-show-circuits-included-in">Circuits included in: <%= @exercise.circuits.size %></div>
+<%= link_to "Add to Circuit", root_path, class: "btn" %>
+<%= link_to "Back", :back %>
+</div>
+
