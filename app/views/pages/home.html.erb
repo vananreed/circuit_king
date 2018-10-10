@@ -1,12 +1,17 @@
 <div class="container">
 <h1>CircuitKing</h1>
 
+<div class="workout-now-button text-center">
+  <%= link_to "Workout Now", circuit_workout_path(Circuit.last), class: "btn" %>
+</div>
+
 <div class="create-your-own-workout">
+  <h3>Create Your Own Circuit</h3>
   <div class="exercise-selection-area">
     This is where
     <ul>
     <% @exercises.each do |exercise| %>
-      <li><strong><%= exercise.name %></strong></li>
+      <li><strong><%= link_to exercise.name, exercise_path(exercise) %></strong></li>
     <% end %>
       <li>there</li>
       <li>will be a list</li>
@@ -15,8 +20,6 @@
     <%= link_to "Add new Exercise", new_exercise_path %>
   </div>
 </div>
-
-<%= link_to "Workout Now", circuit_workout_path(Circuit.last) %>
 
 <div class="popular-workouts">
   <h2>Popular Workouts</h2>

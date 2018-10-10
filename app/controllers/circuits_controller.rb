@@ -16,6 +16,7 @@ class CircuitsController < ApplicationController
   end
 
   def index
+    @circuits = Circuit.all
   end
 
   def edit

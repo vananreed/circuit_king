@@ -1,3 +1,4 @@
+<div class="container">
 <%= @circuit.name %>
 <div class="workout-timer">
   <span class="timer-workout-minutes">30</span>:<span class="timer-workout-seconds">00</span>
@@ -9,3 +10,4 @@
 <% @circuit.exercises.each do |exercise| %>
   <%= exercise.name %>
 <% end %>
+</div>

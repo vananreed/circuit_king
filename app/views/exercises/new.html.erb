@@ -1,0 +1,11 @@
+<div class="container">
+  <h3 class="text-center">Add your Excercise to the Kingdom of Circuitry</h3>
+  <div class="row">
+  <%= simple_form_for @exercise do |f| %>
+  <div class="col-lg-6"><%= f.input :name %></div>
+  <div class="col-lg-6"><%= f.input :difficulty, collection: ["easy", "moderate", "difficult", "very difficult"] %></div>
+  <div class="col-lg-12"><%= f.input :description %></div>
+  <div class="col-lg-12"><%= f.submit "Add Exercise" %></div>
+  <% end %>
+  </div>
+</div>
