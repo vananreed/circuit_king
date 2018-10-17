@@ -22,7 +22,7 @@ function clickTimer(e) {
     document.querySelector(".workout-timer").innerHTML = minutes + "m " + seconds + "s ";
 
     // If the count down is finished, write some text
-    if (distance < 0) {
+    if (distance <= 0) {
       clearInterval(x);
       document.getElementById("demo").innerHTML = "EXPIRED";
     }
