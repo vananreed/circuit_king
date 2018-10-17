@@ -1,3 +1,4 @@
+
 class CircuitsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:workout, :show, :index]
   before_action :set_circuit, only: [:edit, :update, :show, :destroy]
