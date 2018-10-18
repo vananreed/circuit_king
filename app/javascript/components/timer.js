@@ -1,7 +1,7 @@
 
 
 function clickTimer(e) {
-  const html = "<div class=exercise-timer>00:30</div>";
+  const html = `<div class=exercise-timer>00:30</div>`;
   e.toElement.insertAdjacentHTML("afterend", html);
   e.toElement.remove();
   const workoutTime = 30;
@@ -24,9 +24,11 @@ function clickTimer(e) {
     document.querySelector(".workout-timer").innerHTML = minutes + "m " + seconds + "s ";
     if (seconds > 30){
       document.querySelector(".exercise-timer").innerHTML = "00:" + (seconds-30);
+    } else if (seconds < 10) {
+      document.querySelector(".exercise-timer").innerHTML = "00:0" + seconds;
     } else {
       document.querySelector(".exercise-timer").innerHTML = "00:" + seconds;
-    }   // If the count down is finished, write some text
+    }  // If the count down is finished, write some text
     if (distance <= 0) {
       clearInterval(x);
       document.querySelector(".workout-timer").innerHTML = "EXPIRED";
