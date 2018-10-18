@@ -11,6 +11,7 @@ class CircuitsController < ApplicationController
   end
 
   def create
+    byebug
   end
 
   def show
