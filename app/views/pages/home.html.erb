@@ -7,17 +7,26 @@
 
 <div class="create-your-own-workout">
   <h3>Create Your Own Circuit</h3>
-  <div class="exercise-selection-area">
-    This is where
-    <ul>
-    <% @exercises.each do |exercise| %>
-      <li><strong><%= link_to exercise.name, exercise_path(exercise) %></strong></li>
-    <% end %>
-      <li>there</li>
-      <li>will be a list</li>
-      <li>of exercises to add</li>
-    </ul>
-    <%= link_to "Add new Exercise", new_exercise_path %>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="exercise-selection-area">
+        Click on Exercises you'd like to add to your circuit:
+        <ul>
+        <% @exercises.each do |exercise| %>
+          <li class="homepage-exercise-item" id=<%= "exercise" + exercise.id.to_s %>><%= link_to exercise.name, exercise_path(exercise) %><i class="fas fa-plus"></i></li>
+        <% end %>
+        </ul>
+        <%= link_to "Add new Exercise", new_exercise_path %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="selected-exercises-area">
+        Selected Exercises
+        <ul class="selected-exercises-list">
+
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 
