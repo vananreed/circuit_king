@@ -5,3 +5,14 @@
   border-radius: 3px;
   box-shadow: 2px 3px #e6e6e6;
 }
+
+.workout-now-button {
+  margin-bottom: 25px;
+}
+
+.homepage-exercise-item i {
+  color: $red;
+  &:hover {
+    opacity: 0.7;
+  }
+}
