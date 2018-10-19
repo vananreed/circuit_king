@@ -30,8 +30,11 @@
     <div class="col-sm-4">
       <div class="create-circuit-button">
         Name your Circuit
-        <input type="text" name="circuit-name">
-        <div><%= link_to "Create Circuit", circuits_path, method: :post %></div>
+        <%= simple_form_for @circuit, method: :post do |f| %>
+        <%= f.input :name %>
+
+        <%= f.submit %>
+        <% end %>
       </div>
     </div>
   </div>
