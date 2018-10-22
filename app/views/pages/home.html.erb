@@ -32,7 +32,7 @@
         Name your Circuit
         <%= simple_form_for @circuit, method: :post do |f| %>
         <%= f.input :name %>
-
+        <%= f.input :exercises, as: :check_boxes, collection: Exercise.all %>
         <%= f.submit %>
         <% end %>
       </div>
