@@ -11,7 +11,15 @@ class CircuitsController < ApplicationController
   end
 
   def create
-    byebug
+    @exercise_ids = params['circuit']['exercises'].select { |exercise| exercise != '' }.map { |exercise| exercise.to_i }
+    @exercises = @exercise_ids.map { |id| Exercise.find(id)}
+    @circuit = Circuit.new(circuit_params)
+    @circuit.exercises = @exercises
+    if @circuit.save!
+      redirect_to circuit_workout_path(@circuit)
+    else
+      redirect_to root_path
+    end
   end
 
   def show
@@ -34,5 +42,9 @@ class CircuitsController < ApplicationController
 
   def set_circuit
     @circuit = Circuit.find(params[:id])
+  end
+
+  def circuit_params
+    params.require(:circuit).permit(:name, :exercises)
   end
 end
