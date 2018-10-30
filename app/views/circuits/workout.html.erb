@@ -7,7 +7,7 @@
   Start Workout
 </div>
 <h3>Upcoming Exercises</h3>
-<% @circuit.exercises.each do |exercise| %>
-  <%= exercise.name %>
+<% @circuit.exercises.each_with_index do |exercise, index| %>
+  <div><%= index + 1 %> - <%= exercise.name %></div>
 <% end %>
 </div>
