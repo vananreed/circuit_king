@@ -32,7 +32,9 @@
         Name your Circuit
         <%= simple_form_for @circuit, method: :post do |f| %>
         <%= f.input :name %>
-        <%= f.input :exercises, as: :check_boxes, collection: Exercise.all %>
+        <div class="exercises-check-boxes">
+          <%= f.input :exercises, as: :check_boxes, collection: Exercise.all %>
+        </div>
         <%= f.submit %>
         <% end %>
       </div>
@@ -42,11 +44,12 @@
 
 <div class="popular-workouts">
   <h2>Popular Workouts</h2>
+  <div class="row">
     <% @circuits.each do |circuit| %>
-      <h3><%= circuit.name  %></h3>
-      <% circuit.exercises.each do |e| %>
-      <%= e.name %>
+      <div class="col-sm-12 col-md-6 col-lg-4">
+      <%= render 'shared/circuit-card', circuit: circuit %>
+      </div>
     <% end %>
-  <% end %>
+  </div>
 </div>
 </div>

@@ -5,8 +5,9 @@
   color: white;
   text-align: center;
   margin: 5px auto;
-  width: 150px;
+  width: 160px;
   border: 2px solid $red;
+  display: block;
 
   &:hover {
     color: $red;
