@@ -1,13 +1,21 @@
 <div class="container">
-<%= @circuit.name %>
-<div class="workout-timer">
-  <span class="timer-workout-minutes">30</span>m<span class="timer-workout-seconds">00</span>s
-</div>
-<div class="timer-start-button button-large">
-  Start Workout
-</div>
-<h3>Upcoming Exercises</h3>
-<% @circuit.exercises.each_with_index do |exercise, index| %>
-  <div><%= index + 1 %> - <%= exercise.name %></div>
-<% end %>
+  <div class="exercise-circuit-name text-center"><%= @circuit.name %></div>
+  <div class="workout-timer">
+    <span class="timer-workout-minutes">30</span>m<span class="timer-workout-seconds">00</span>s
+  </div>
+  <div class="timer-start-button button-large">
+    Start Workout
+  </div>
+  <div class="workout-exercise-info">
+    <div class="workout-current-exercise">
+      <h3>Current Exercise:</h3>
+      <div class="current-exercise-name" data-index="1"><%= @circuit.exercises.first.name %></div>
+    </div>
+    <div class="workout-exercises-list">
+      <h3>EXERCISE LIST</h3>
+      <% @circuit.exercises.each_with_index do |exercise, index| %>
+      <div class="exercise-list-exercise-name"data-index="<%= index + 1 %>">- <%= exercise.name %> -</div>
+      <% end %>
+    </div>
+  </div>
 </div>
