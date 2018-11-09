@@ -5,9 +5,18 @@ function clickTimer(e) {
   e.toElement.insertAdjacentHTML("afterend", html);
   e.toElement.remove();
   const workoutTime = 30;
+  const numberOfExercises = document.querySelectorAll('.exercise-list-exercise-name').length;
   const start = new Date();
   const countDownDate = new Date(start.getTime() + workoutTime*60000);
 // Timer countdown and function changing exercise every 30 seconds
+  setInterval(function() {
+    const currentExercise = document.querySelector('.current-exercise-name');
+    let index = parseInt(currentExercise.dataset.index);
+    if (index === numberOfExercises) { index = 0 };
+    const nextExercise = document.querySelector(`div[data-index='${index+1}']`);
+    currentExercise.innerText = nextExercise.innerText;
+    currentExercise.dataset.index = index + 1;
+  }, 30000)
   const x = setInterval(function() {
 
     // Get todays date and time
@@ -16,7 +25,7 @@ function clickTimer(e) {
     // Find the distance between now and the count down date
     const distance = countDownDate - now;
 
-    // Time calculations for days, hours, minutes and seconds
+    // Time calculations for minutes and seconds
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 

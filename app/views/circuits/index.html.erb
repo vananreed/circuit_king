@@ -1,5 +1,6 @@
 <div class="container">
+  <h2>All Circuits</h2>
   <% @circuits.each do |circuit| %>
-  <%= circuit.name %>
+  <%= render 'shared/circuit-card', circuit: circuit %>
   <% end %>
 </div>

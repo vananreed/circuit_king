@@ -1,0 +1,28 @@
+.exercise-circuit-name  {
+  margin-top: 15px;
+  font-size: 35px;
+}
+
+.workout-exercise-info {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+
+.workout-current-exercise {
+  div {
+    font-size: 30px;
+  }
+  text-align: center;
+  .current-exercise-name {
+    color: $red;
+    font-size: 60px;
+  }
+}
+
+
+.workout-exercises-list {
+  text-align: center;
+}
