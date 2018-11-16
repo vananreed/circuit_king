@@ -6,7 +6,7 @@ class CircuitsController < ApplicationController
   def workout
     @circuit = Circuit.find(params[:circuit_id])
     RSpotify.authenticate("#{ENV['SPOTIFYCLIENTID']}", "#{ENV['SPOTIFYCLIENTSECRET']}")
-    @playlist = RSpotify::Playlist.search('workout').sample
+    @playlist_id = RSpotify::Playlist.search('workout').sample.id
   end
 
   def new
