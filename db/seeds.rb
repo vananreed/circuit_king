@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Circuit.destroy_all
 Exercise.destroy_all
 
 Exercise.create(name: "Burpees",
@@ -29,3 +30,7 @@ Exercise.create(name: "Air Squats",
             4. Repeat",
             difficulty: "easy"
             )
+
+circuit = Circuit.new(name: "Muscle Blaster")
+circuit.exercises = [Exercise.first, Exercise.last]
+circuit.save!
