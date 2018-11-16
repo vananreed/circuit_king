@@ -3,7 +3,27 @@
 <div class="exercise-show-exercise-difficulty">Difficulty: <%= @exercise.difficulty.capitalize %></div>
 <div class="exercise-show-description">Description: <%= @exercise.description %></div>
 <div class="exercise-show-circuits-included-in">Circuits included in: <%= @exercise.circuits.size %></div>
-<%= link_to "Add to Circuit", root_path, class: "btn" %>
-<%= link_to "Back", :back %>
+<div class="back-button-exercise-show"><%= link_to "Back", :back %></div>
+<div class="video-id" style="display: none;"><%= @id %></div>
+
+<div id="ytplayer"></div>
 </div>
 
+<script>
+  // Load the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/player_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  const id = document.querySelector('.video-id').innerText
+  // Replace the 'ytplayer' element with an <iframe> and
+  // YouTube player after the API code downloads.
+  var player;
+  function onYouTubePlayerAPIReady() {
+    player = new YT.Player('ytplayer', {
+      height: '360',
+      width: '640',
+      videoId: id
+    });
+  }
+</script>

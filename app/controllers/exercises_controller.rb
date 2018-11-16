@@ -6,6 +6,11 @@ class ExercisesController < ApplicationController
   end
 
   def show
+    url = "https://www.googleapis.com/youtube/v3/search?q=#{@exercise.name}&maxResults=1&part=snippet%20&key=#{ENV['SERVERKEY']}"
+    uri = URI(url)
+    response = Net::HTTP.get(uri)
+    res = JSON.parse(response)
+    @id = res["items"][0]["id"]["videoId"]
   end
 
   def new
