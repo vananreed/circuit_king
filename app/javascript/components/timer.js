@@ -4,6 +4,8 @@ function clickTimer(e) {
   const html = `<div class=exercise-timer>00:30</div>`;
   e.toElement.insertAdjacentHTML("afterend", html);
   e.toElement.remove();
+  const playButton = document.querySelector('iframe');
+  console.log(playButton);
   const workoutTime = 30;
   const numberOfExercises = document.querySelectorAll('.exercise-list-exercise-name').length;
   const start = new Date();
