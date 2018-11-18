@@ -1,5 +1,12 @@
 // Specific CSS for your home-page
+h1 {
+  color: white;
+  text-shadow: 1px 1px black;
+}
+
 .create-your-own-workout {
+  margin-top: 10vh;
+  min-height: 500px;
   background: white;
   padding: 20px;
   border-radius: 3px;
