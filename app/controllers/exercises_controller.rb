@@ -1,3 +1,4 @@
+require 'open-uri'
 class ExercisesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :set_exercise, only: [:edit, :update, :destroy, :show]
@@ -15,6 +16,12 @@ class ExercisesController < ApplicationController
 
   def new
     @exercise = Exercise.new
+  end
+
+  def search_ace
+    url = 'https://www.acefitness.org/education-and-resources/lifestyle/exercise-library/body-part/'
+    url += params['body-part'] if params['body-part']
+    @page = Nokogiri::HTML(open(url)).inner_html
   end
 
   def create
