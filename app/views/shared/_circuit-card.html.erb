@@ -3,7 +3,7 @@
 <div class="circuit-card">
   <h3><%= circuit.name  %></h3>
   <% circuit.exercises.each do |e| %>
-    <div><%= e.name %></div>
+    <div><%= e.name %>  |  <%= link_to "->", e %></div>
   <% end %>
   <div class="select-workout-button">
     <%= link_to "Start workout", circuit_workout_path(circuit), class: "button-large" %>
