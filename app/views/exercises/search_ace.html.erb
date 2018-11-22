@@ -1,1 +1,19 @@
-<%= @page.html_safe %>
+<div class="container">
+  <form action="/search_ace">
+    <label for="body-part">Search For a Specific body Part</label>
+    <select name="body-part">
+      <% @categories.each do |cat| %>
+      <option value="<%= cat.downcase %>"><%= cat %></option>
+      <% end %>
+    </select>
+    <input type="submit">
+  </form>
+  <% @exercises.each do |exercise| %>
+    <div><%= exercise[:name] %></div>
+    <div><%= exercise[:description] %></div>
+    <div>Difficulty:<%= exercise[:difficulty] %></div>
+    <div><%= image_tag exercise[:image] %></div>
+    <%= link_to "Add Exercise", exercises_path, method: :post %>
+  <% end %>
+</div>
+      <%= @categories %>

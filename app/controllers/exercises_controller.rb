@@ -21,7 +21,17 @@ class ExercisesController < ApplicationController
   def search_ace
     url = 'https://www.acefitness.org/education-and-resources/lifestyle/exercise-library/body-part/'
     url += params['body-part'] if params['body-part']
-    @page = Nokogiri::HTML(open(url)).inner_html
+    @categories = Nokogiri::HTML(open(url)).css('.widget__link-list-title').text.strip.gsub(' ', '').gsub('/', '-').split.uniq
+    ###need to add hyphens to some of the category names to create correct url when requested
+    @cards = Nokogiri::HTML(open(url)).css('.exercise-card-grid__cell')     #.inner_html
+    @exercises = @cards.map do |card|
+      {
+        name: card.css('.exercise-card__title').text,
+        description: card.css('.exercise-info__term--body-part').text.gsub(/(\r\n\t)/, ''),
+        image: card.css('.exercise-card__image').attribute('style').value[22..89], #need to fix this for all image links
+        difficulty: card.css('.exercise-info__lvl-label').text
+      }
+    end
   end
 
   def create
