@@ -2,6 +2,7 @@
   <form action="/search_ace">
     <label for="body-part">Search For a Specific body Part</label>
     <select name="body-part">
+      <option value="">All</option>
       <% @categories.each do |cat| %>
       <option value="<%= cat.downcase %>"><%= cat %></option>
       <% end %>
