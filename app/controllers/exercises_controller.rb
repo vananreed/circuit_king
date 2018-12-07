@@ -23,12 +23,12 @@ class ExercisesController < ApplicationController
     url += params['body-part'] if params['body-part']
     @categories = Nokogiri::HTML(open(url)).css('.widget__link-list-title').text.strip.gsub(' ', '').gsub('/', '-').split.uniq
     ###need to add hyphens to some of the category names to create correct url when requested
-    @cards = Nokogiri::HTML(open(url)).css('.exercise-card-grid__cell')     #.inner_html
+    @cards = Nokogiri::HTML(open(url)).css('.exercise-card-grid__cell')
     @exercises = @cards.map do |card|
       {
         name: card.css('.exercise-card__title').text,
         description: card.css('.exercise-info__term--body-part').text.gsub(/(\r\n\t)/, ''),
-        image: card.css('.exercise-card__image').attribute('style').value[22..89], #need to fix this for all image links
+        image: card.css('.exercise-card__image').attribute('style').text.match(/.*url\('([^'\);]*)/)[1],
         difficulty: card.css('.exercise-info__lvl-label').text
       }
     end
