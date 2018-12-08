@@ -17,7 +17,8 @@
           <li class="homepage-exercise-item" id=<%= "exercise" + exercise.id.to_s %>><%= link_to exercise.name, exercise_path(exercise) %> <i class="fas fa-plus"></i></li>
         <% end %>
         </ul>
-        <%= link_to "Add new Exercise", new_exercise_path %>
+        <%= link_to "Add new Exercise", new_exercise_path %> |
+        <%= link_to "Add from database", search_ace_path %>
       </div>
     </div>
     <div class="col-sm-4">

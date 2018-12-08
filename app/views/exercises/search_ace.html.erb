@@ -1,0 +1,20 @@
+<div class="container">
+  <form action="/search_ace">
+    <label for="body-part">Search for a specific body part</label>
+    <select name="body-part">
+      <option value="">All</option>
+      <% @categories.each do |cat| %>
+      <option value="<%= cat.downcase %>"><%= cat %></option>
+      <% end %>
+    </select>
+    <input type="submit">
+  </form>
+  <div class="row">
+  <% @exercises.each do |exercise| %>
+    <div class="col-md-6">
+      <%= render 'shared/ace-exercise-card', exercise: exercise %>
+    </div>
+  <% end %>
+  </div>
+</div>
+

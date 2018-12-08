@@ -1,3 +1,4 @@
+require 'open-uri'
 class ExercisesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :set_exercise, only: [:edit, :update, :destroy, :show]
@@ -15,6 +16,23 @@ class ExercisesController < ApplicationController
 
   def new
     @exercise = Exercise.new
+  end
+
+  def search_ace
+    url = 'https://www.acefitness.org/education-and-resources/lifestyle/exercise-library/body-part/'
+    url += params['body-part'] if params['body-part']
+    @categories = Nokogiri::HTML(open(url)).css('.widget__link-list-title').text.strip.gsub(' ', '').gsub('/', '-').split.uniq
+    ###need to add hyphens to some of the category names to create correct url when requested
+    @cards = Nokogiri::HTML(open(url)).css('.exercise-card-grid__cell')
+    @exercises = @cards.map do |card|
+      {
+        name: card.css('.exercise-card__title').text,
+        description: card.css('.exercise-info__term--body-part').text.gsub(/(\r\n\t)/, ''),
+        image: card.css('.exercise-card__image').attribute('style').text.match(/.*url\('([^'\);]*)/)[1],
+        difficulty: card.css('.exercise-info__lvl-label').text,
+        link: 'https://www.acefitness.org/'+card.css('a').attr('href').value
+      }
+    end
   end
 
   def create
