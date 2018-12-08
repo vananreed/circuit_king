@@ -1,6 +1,6 @@
 <div class="container">
   <form action="/search_ace">
-    <label for="body-part">Search For a Specific body Part</label>
+    <label for="body-part">Search for a specific body part</label>
     <select name="body-part">
       <option value="">All</option>
       <% @categories.each do |cat| %>
@@ -9,11 +9,12 @@
     </select>
     <input type="submit">
   </form>
+  <div class="row">
   <% @exercises.each do |exercise| %>
-    <div><%= exercise[:name] %></div>
-    <div><%= exercise[:description] %></div>
-    <div>Difficulty:<%= exercise[:difficulty] %></div>
-    <div><%= image_tag exercise[:image] %></div>
-    <%= link_to "Add Exercise", exercises_path, method: :post %>
+    <div class="col-md-6">
+      <%= render 'shared/ace-exercise-card', exercise: exercise %>
+    </div>
   <% end %>
+  </div>
 </div>
+

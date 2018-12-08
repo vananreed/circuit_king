@@ -29,7 +29,8 @@ class ExercisesController < ApplicationController
         name: card.css('.exercise-card__title').text,
         description: card.css('.exercise-info__term--body-part').text.gsub(/(\r\n\t)/, ''),
         image: card.css('.exercise-card__image').attribute('style').text.match(/.*url\('([^'\);]*)/)[1],
-        difficulty: card.css('.exercise-info__lvl-label').text
+        difficulty: card.css('.exercise-info__lvl-label').text,
+        link: 'https://www.acefitness.org/'+card.css('a').attr('href').value
       }
     end
   end
