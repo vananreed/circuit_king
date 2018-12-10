@@ -3,7 +3,9 @@
 <h1>CircuitKing</h1>
 
 <div class="workout-now-button text-center">
-  <%= link_to "Workout Now", circuit_workout_path(Circuit.last), class: "button-large" %>
+  <% if @circuits.presence %>
+    <%= link_to "Workout Now", circuit_workout_path(Circuit.last), class: "button-large" %>
+  <% end %>
 </div>
 
 <div class="create-your-own-workout">
