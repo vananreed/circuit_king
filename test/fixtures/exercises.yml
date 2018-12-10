@@ -1,0 +1,16 @@
+push-ups:
+  id: 1
+  name: 'Push-ups'
+  description: "1. Assume plank position with hands at shoulder width on the floor.
+            2. Lower chest to hands.
+            3. Push upwards and return to plank.
+            4. Repeat"
+  difficulty: 'difficult'
+burpees:
+  id: 2
+  name: 'Burpees'
+  description: "1. Perform Pushup.
+            2. Jump feet up to hands.
+            3. Squat, shoot hands to the sky and jump.
+            4. Return to plank and repeat"
+  difficulty: 'difficult'
