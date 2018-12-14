@@ -19,19 +19,22 @@ class ExercisesController < ApplicationController
   end
 
   def search_ace
-    url = 'https://www.acefitness.org/education-and-resources/lifestyle/exercise-library/body-part/'
-    url += params['body-part'] if params['body-part']
-    @categories = Nokogiri::HTML(open(url)).css('.widget__link-list-title').text.strip.gsub(' ', '').gsub('/', '-').split.uniq
-    ###need to add hyphens to some of the category names to create correct url when requested
-    @cards = Nokogiri::HTML(open(url)).css('.exercise-card-grid__cell')
-    @exercises = @cards.map do |card|
-      {
+    base_url = 'https://www.acefitness.org/'
+    index_url = base_url + 'education-and-resources/lifestyle/exercise-library/body-part/'
+    index_url += params['body-part'] if params['body-part']
+    @categories = Nokogiri::HTML(open(index_url)).css('.widget__link-list-title').text.strip.gsub(' ', '').gsub('/', '-').split.uniq
+    ###need to add hyphens to some of the category names to create correct index_url when requested
+    @cards = Nokogiri::HTML(open(index_url)).css('.exercise-card-grid__cell')
+    @exercises = []
+    @cards.each do |card|
+      link = base_url + card.css('a').attr('href').value
+      @exercises << {
         name: card.css('.exercise-card__title').text,
         short_desc: card.css('.exercise-info__term--body-part').text.gsub(/(\r\n\t)/, ''),
         image: card.css('.exercise-card__image').attribute('style').text.match(/.*url\('([^'\);]*)/)[1],
         difficulty: card.css('.exercise-info__lvl-label').text,
-        link: 'https://www.acefitness.org/'+card.css('a').attr('href').value,
-        long_desc: Nokogiri::HTML(open('https://www.acefitness.org/'+card.css('a').attr('href').value)).css('.exercise-post__step-content').text.gsub!(/Share:/, '')
+        link: link,
+        long_desc: Nokogiri::HTML(open(link)).css('.exercise-post__step-content').text.gsub!(/Share:/, '')
       }
     end
   end
