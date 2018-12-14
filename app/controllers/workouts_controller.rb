@@ -8,7 +8,7 @@ class WorkoutsController < ApplicationController
   end
 
   def index
-    @workouts = Workout.where(user_id: current_user.id)
+    @workouts = Workout.where(user_id: current_user.id).order(created_at: :desc)
   end
 
   private
