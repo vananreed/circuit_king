@@ -1,10 +1,10 @@
 
 <div class="ace-exercise-card">
   <div><%= exercise[:name] %></div>
-  <div><%= exercise[:description] %></div> <!-- need to scrape better description. -->
+  <div><%= exercise[:short_desc] %></div>
   <div>Difficulty: <%= exercise[:difficulty] %></div>
   <div><%= image_tag exercise[:image] %></div>
-  <%= link_to "Add Exercise", exercises_path(exercise: {name: exercise[:name], description: exercise[:description], difficulty: exercise[:difficulty]}), method: :post %> |
+  <%= link_to "Add Exercise", exercises_path(exercise: {name: exercise[:name], description: exercise[:long_desc], difficulty: exercise[:difficulty]}), method: :post %> |
   <a href="<%= exercise[:link] %>">Details</a>
 </div>
 
