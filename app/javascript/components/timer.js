@@ -29,7 +29,7 @@ function clickTimer(e) {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Display the result in the element with id="demo"
+    // Display the result in the timer
     document.querySelector(".workout-timer").innerHTML = minutes + "m " + seconds + "s ";
     if (seconds > 30){
       document.querySelector(".exercise-timer").innerHTML = "00:" + (seconds-30);
@@ -41,6 +41,8 @@ function clickTimer(e) {
     if (distance <= 0) {
       clearInterval(x);
       document.querySelector(".workout-timer").innerHTML = "EXPIRED";
+      document.querySelector(".exercise-timer").remove();
+      document.querySelector(".finish-workout").style.display = "block";
     }
   }, 1000);
 };

@@ -3,6 +3,7 @@
   <div class="workout-timer">
     <span class="timer-workout-minutes">30</span>m<span class="timer-workout-seconds">00</span>s
   </div>
+  <div><%= link_to "Finish Workout", workouts_path, class: "finish-workout button-large", method: :post, remote: true %></div>
   <div class="timer-start-button button-large">
     Start Workout
   </div>

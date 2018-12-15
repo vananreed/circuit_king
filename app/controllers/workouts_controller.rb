@@ -2,6 +2,10 @@ class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:show]
 
   def create
+    respond_to do |format|
+      format.html { redirect_to workouts_path }
+      format.js
+    end
   end
 
   def show
