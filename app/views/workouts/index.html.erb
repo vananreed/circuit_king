@@ -1,0 +1,15 @@
+<div class="container">
+  <% @workouts.each do |workout| %>
+    <%= link_to workout do %>
+      <div class="workout-card">
+        <div class="workout-created-at">Date: <%= workout.created_at %></div>
+        <!-- need to create model method that calculates minutes and secs. i.e. 6:36 -->
+        <div class="workout-length">Duration: <%= workout.length/60 %> minutes</div>
+        <!-- ^^^^^^ -->
+        <div class="workout-interval">Interval: <%= workout.interval %>s</div>
+        <div class="workout-circuit-name">Circuit name: <%= workout.circuit.name %></div>
+        <div class="workout-calories">Calories burned: <%= workout.calories %></div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

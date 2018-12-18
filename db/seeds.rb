@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Circuit.destroy_all
 Exercise.destroy_all
+Workout.destroy_all
 
 Exercise.create(name: "Burpees",
             description: "1. Perform Pushup.
@@ -34,3 +35,14 @@ Exercise.create(name: "Air Squats",
 circuit = Circuit.new(name: "Muscle Blaster")
 circuit.exercises = [Exercise.first, Exercise.last]
 circuit.save!
+
+4.times do
+  Workout.create(
+        calories: rand(400),
+        length: rand(3600),
+        # hr: rand(70..150),
+        interval: rand(60),
+        circuit: circuit,
+        user: User.all.sample
+    )
+end
