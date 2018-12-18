@@ -2,10 +2,8 @@ class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:show]
 
   def create
-    respond_to do |format|
-      format.html { redirect_to workouts_path }
-      format.js
-    end
+    @w = Workout.create!(length: 1800, calories: rand(300), interval: 30, user: current_user, circuit: Circuit.find(params[:circuit].to_i))
+    redirect_to workout_path(@w)
   end
 
   def show
