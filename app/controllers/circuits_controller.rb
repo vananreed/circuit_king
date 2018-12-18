@@ -1,6 +1,6 @@
 require 'rspotify'
 class CircuitsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:workout, :show, :index]
+  skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :set_circuit, only: [:edit, :update, :show, :destroy]
 
   def workout
