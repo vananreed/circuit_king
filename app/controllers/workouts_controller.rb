@@ -11,6 +11,7 @@ class WorkoutsController < ApplicationController
 
   def index
     @workouts = Workout.where(user_id: current_user.id).order(created_at: :desc)
+    @calories = @workouts.map {|w| w.calories }.reject {|c| c.nil? }.reduce(:+)
   end
 
   private

@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="total-calories-burned">
+    Total calories burned: <span id="total-calories-history"><%= @calories %></span>
+  </div>
   <div id="timeline">
     <% left = true %>
     <% @workouts.each do |workout| %>
