@@ -177,7 +177,7 @@ header {
 }
 
 // Buttons
-.btn {
+.btn-timeline {
   padding: 5px 15px;
   text-decoration: none;
   background: transparent;
@@ -193,6 +193,8 @@ header {
 
   &:hover {
     box-shadow: none ;
+    color: black;
+    text-decoration: none;
     top: 2px;
     left: 2px;
     @include prefix(box-shadow, 2px 2px 0 transparent);
