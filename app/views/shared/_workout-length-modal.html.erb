@@ -1,0 +1,33 @@
+<!-- Button trigger modal -->
+<div class="select-workout-button">
+<button type="button" class="button-large" data-toggle="modal" data-target="#<%= circuit.id %>-modal">
+  Start Workout
+</button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="<%= circuit.id %>-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Workout Length</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        How long will your workout be today?
+        <div class="workout-duration">
+  <%= simple_form_for @workout do |f| %>
+  <%= f.input :length, input_html: { min: '3', step: 'any', max: 90 }, label: "Minutes" %>
+  <% end %>
+  </div>
+      </div>
+      <div class="modal-footer">
+        <div class="select-workout-button">
+    <%= link_to "Start workout", circuit_workout_path(circuit), class: "button-large" %>
+  </div>
+      </div>
+    </div>
+  </div>
+</div>

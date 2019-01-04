@@ -6,5 +6,6 @@ class PagesController < ApplicationController
     @circuits = Circuit.all
     @circuit = Circuit.new
     @circuitExercises = []
+    @workout = Workout.new
   end
 end

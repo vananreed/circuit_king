@@ -14,7 +14,7 @@ class CircuitsController < ApplicationController
 
   def create
     @exercise_ids = params['circuit']['exercises'].select { |exercise| exercise != '' }.map { |exercise| exercise.to_i }
-    @exercises = @exercise_ids.map { |id| Exercise.find(id)}
+    @exercises = @exercise_ids.map { |id| Exercise.find(id) }
     @circuit = Circuit.new(circuit_params)
     @circuit.exercises = @exercises
     if @circuit.save!
@@ -29,6 +29,7 @@ class CircuitsController < ApplicationController
 
   def index
     @circuits = Circuit.all
+    @workout = Workout.new
   end
 
   def edit
