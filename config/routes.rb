@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :circuits do
     get 'workout', to: 'circuits#workout'
   end
-  resources :workouts, only: [:create, :show, :index]
+  resources :workouts, only: [:create, :show, :index, :update]
 end

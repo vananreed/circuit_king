@@ -1,7 +1,7 @@
 <!-- Button trigger modal -->
 <div class="select-workout-button">
 <button type="button" class="button-large" data-toggle="modal" data-target="#<%= circuit.id %>-modal">
-  Start Workout
+  <%= text %>
 </button>
 </div>
 
@@ -18,15 +18,15 @@
       <div class="modal-body">
         How long will your workout be today?
         <div class="workout-duration">
-  <%= simple_form_for @workout do |f| %>
-  <%= f.input :length, input_html: { min: '3', step: 'any', max: 90 }, label: "Minutes" %>
-  <% end %>
+  <%= simple_form_for @workout, url: workouts_path(circuit: circuit), method: :post do |f| %>
+  <%= f.input :length, input_html: { min: 3, step: 'any', max: 90, value: 30 }, label: "Minutes", required: true %>
   </div>
       </div>
       <div class="modal-footer">
         <div class="select-workout-button">
-    <%= link_to "Start workout", circuit_workout_path(circuit), class: "button-large" %>
+    <%= f.submit "Start workout", circuit: circuit, class: "button-large" %>
   </div>
+  <% end %>
       </div>
     </div>
   </div>

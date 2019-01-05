@@ -4,6 +4,7 @@ class CircuitsController < ApplicationController
   before_action :set_circuit, only: [:edit, :update, :show, :destroy]
 
   def workout
+    @workout = Workout.find(params[:workout].to_i)
     @circuit = Circuit.find(params[:circuit_id])
     RSpotify.authenticate("#{ENV['SPOTIFYCLIENTID']}", "#{ENV['SPOTIFYCLIENTSECRET']}")
     @playlist_id = RSpotify::Playlist.search('workout').sample.id
@@ -18,7 +19,7 @@ class CircuitsController < ApplicationController
     @circuit = Circuit.new(circuit_params)
     @circuit.exercises = @exercises
     if @circuit.save!
-      redirect_to circuit_workout_path(@circuit)
+      redirect_to circuits_path
     else
       redirect_to root_path
     end
@@ -28,7 +29,7 @@ class CircuitsController < ApplicationController
   end
 
   def index
-    @circuits = Circuit.all
+    @circuits = Circuit.order(created_at: :desc)
     @workout = Workout.new
   end
 
