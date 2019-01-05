@@ -14,7 +14,8 @@ class PagesTest < ApplicationSystemTestCase
   test "visit workout page" do
     login_as users(:reed)
     @c = Circuit.first
-    visit circuit_workout_path(@c)
+    @w = Workout.first
+    visit circuit_workout_path(@c, workout: @w)
     assert_selector ".exercise-circuit-name", text: @c.name
   end
 
