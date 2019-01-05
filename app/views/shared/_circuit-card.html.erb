@@ -5,7 +5,7 @@
   <% circuit.exercises.each do |e| %>
     <div><%= e.name %>  |  <%= link_to "->", e %></div>
   <% end %>
-  <div class="select-workout-button">
-    <%= link_to "Start workout", circuit_workout_path(circuit), class: "button-large" %>
-  </div>
+
+  <%= render 'shared/workout-length-modal', text: "Start Workout", circuit: circuit %>
+
 </div>

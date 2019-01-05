@@ -4,7 +4,7 @@ function clickTimer(e) {
   const html = `<div class=exercise-timer>00:30</div>`;
   e.toElement.insertAdjacentHTML("afterend", html);
   e.toElement.remove();
-  const workoutTime = 30;
+  const workoutTime = parseInt(document.querySelector('.timer-workout-minutes').innerText);
   const numberOfExercises = document.querySelectorAll('.exercise-list-exercise-name').length;
   const start = new Date();
   const countDownDate = new Date(start.getTime() + workoutTime*60000);

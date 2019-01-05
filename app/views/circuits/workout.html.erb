@@ -1,9 +1,9 @@
 <div class="container">
   <div class="exercise-circuit-name text-center"><%= @circuit.name %></div>
   <div class="workout-timer">
-    <span class="timer-workout-minutes">30</span>m<span class="timer-workout-seconds">00</span>s
+    <span class="timer-workout-minutes"><%= @workout.length/60 %></span>m<span class="timer-workout-seconds">00</span>s
   </div>
-  <div><%= link_to "Finish Workout", workouts_path(circuit: @circuit), class: "finish-workout button-large", method: :post %></div>
+  <div><%= link_to "Finish Workout", workout_path(@workout), class: "finish-workout button-large", method: :patch %></div>
   <div class="timer-start-button button-large">
     Start Workout
   </div>

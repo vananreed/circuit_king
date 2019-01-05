@@ -1,0 +1,7 @@
+workout1:
+  id: 1
+  circuit_id: 1
+  length: 360
+  interval: 30
+  calories: 300
+  user_id: 1

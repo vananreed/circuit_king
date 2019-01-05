@@ -4,7 +4,7 @@
 
 <div class="workout-now-button text-center">
   <% if @circuits.presence %>
-    <%= link_to "Workout Now", circuit_workout_path(Circuit.last), class: "button-large" %>
+    <%= render 'shared/workout-length-modal', text: "Workout now", circuit: Circuit.last %>
   <% end %>
 </div>
 
@@ -33,13 +33,12 @@
     </div>
     <div class="col-sm-4">
       <div class="create-circuit-button">
-        Name your Circuit
         <%= simple_form_for @circuit, method: :post do |f| %>
-        <%= f.input :name %>
+        <%= f.input :name, label: "Name your Circuit" %>
         <div class="exercises-check-boxes">
           <%= f.input :exercises, as: :check_boxes, collection: Exercise.all %>
         </div>
-        <%= f.submit %>
+        <%= f.submit class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>
