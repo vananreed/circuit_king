@@ -4,6 +4,7 @@ class CircuitsController < ApplicationController
   before_action :set_circuit, only: [:edit, :update, :show, :destroy]
 
   def workout
+    @disable_footer = true
     @workout = Workout.find(params[:workout].to_i)
     @circuit = Circuit.find(params[:circuit_id])
     RSpotify.authenticate("#{ENV['SPOTIFYCLIENTID']}", "#{ENV['SPOTIFYCLIENTSECRET']}")
