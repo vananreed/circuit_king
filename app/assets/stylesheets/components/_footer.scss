@@ -1,10 +1,22 @@
 .footer {
-  margin-top: 30px;
+  margin-top: 40px;
   height: 350px;
   background-color: $red;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background-image: url('images/carbon-fibre-big.png');
+  position: relative;
+}
+
+.wallpaper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url(black-thread.png);
   background-repeat: repeat;
+  opacity: 0.35;
+}
+
+.footer-content {
+  color: white;
+  text-shadow: 1.5px 1.5px black;
 }
