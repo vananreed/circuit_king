@@ -1,6 +1,6 @@
 .footer {
   margin-top: 40px;
-  height: 350px;
+  // height: 350px;
   background-color: $red;
   position: relative;
 }
@@ -17,6 +17,35 @@
 }
 
 .footer-content {
-  color: white;
   text-shadow: 1.5px 1.5px black;
+  padding: 10px;
+  ul {
+
+    list-style: none;
+    li {
+      padding: 5px 0;
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.logo-container {
+  display: flex;
+  height: 250px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.footer-list-container {
+  display: flex;
+  height: 250px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  font-size: 32px;
 }
